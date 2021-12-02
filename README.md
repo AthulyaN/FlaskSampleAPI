@@ -8,7 +8,7 @@ app.py - API source code
 
 data.db - SQLite DB with one table 'Movie'. Its fields are -ID, Name, Genre, Language and IMDB rating.
 
-requirements.txt - Packages Needed
+requirements.txt - Packages needed to run this app. Ensure to 'pip install -r requirements.txt' in your projects virtual environment
 
 Running the API:
 

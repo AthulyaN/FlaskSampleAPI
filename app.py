@@ -61,6 +61,24 @@ def add_movie():
         return {'error': 'Request must be JSON'}, 400
 
 
+# For PUT request to http://localhost:5000/movies/<id>
+@app.route('/movies/<id>', methods=['PUT'])
+def update_movie(id):
+    if request.is_json:
+        movie = Movie.query.get(id)
+        if movie is None:
+            return {'error': 'not found'}, 404
+        else:
+            movie.name = request.json['Name']
+            movie.language = request.json['Language']
+            movie.genre = request.json['Genre']
+            movie.rating = request.json['IMDB rating']
+            db.session.commit()
+            return 'Updated', 200
+    else:
+        return {'error': 'Request must be JSON'}, 400
+
+
 # For DELETE request to http://localhost:5000/movies/<id>
 @app.route('/movies/<id>', methods=['DELETE'])
 def delete_movie(id):
